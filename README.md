@@ -1,10 +1,22 @@
-# yii2-activeform
+# yii2 Activeform Extension (1.0.0)
 
-**version 1.0.0**
-
-Yii2 extended ActiveForm widget.
+A simple Yii2 extended ActiveForm widget.
 <br />
 <br />
+Requirements
+------------
+- Yii2
+- PHP 5.4+
+
+Installation
+------------
+
+The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+
+```bash
+php composer.phar require mdbhayani/yii2-activeform "*"
+```
+
 This widget has the following methods.
 <br />
 <br />
