@@ -1,7 +1,7 @@
 {
     "name": "mdbhayani/yii2-activeform",
     "type": "yii2-extension",
-    "license": "BSD-3-Clause",
+    "license": "GNU-2.0",
     "description": "Yii2 extended activeform widget",
     "keywords": ["yii2", "framework", "activeform", "activefield", "widget"],
     "minimum-stability": "dev",
