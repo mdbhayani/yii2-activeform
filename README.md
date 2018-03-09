@@ -1,2 +1,9 @@
 # yii2-activeform
-Yii2 extended activeform widget
+
+**version 1.0.0**
+
+Yii2 extended ActiveForm widget.
+
+This widget has the following methods that are often used.
+
+### singleDateInput
