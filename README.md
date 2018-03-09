@@ -7,9 +7,9 @@ A simple Yii2 extended ActiveForm widget.
 
 Features
 ------------
-- Bootstrap daterange picker for date picker fields [daterangepicker](http://www.daterangepicker.com/)
-- Select2 for dropDownList [select2](http://www.select2.com/)
-- Summernote for text editor [summernote](http://www.summernote.com/)
+- [Bootstrap daterangepicker](http://www.daterangepicker.com/) for date picker fields
+- [Select2](http://www.select2.com/) for dropDownList
+- [Summernote](http://www.summernote.com/) for text editor
 
 Requirements
 ------------
