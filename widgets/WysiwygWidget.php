@@ -1,7 +1,7 @@
 <?php
-namespace dpassionateprogrammer\yii2\activeform\widgets;
+namespace mdbhayani\yii2\activeform\widgets;
 
-use dpassionateprogrammer\yii2\activeform\assets\WysiwygWidgetAsset;
+use mdbhayani\yii2\activeform\assets\WysiwygWidgetAsset;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;

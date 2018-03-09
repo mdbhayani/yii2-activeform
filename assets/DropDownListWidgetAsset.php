@@ -1,5 +1,5 @@
 <?php
-namespace dpassionateprogrammer\yii2\activeform\assets;
+namespace mdbhayani\yii2\activeform\assets;
 
 use yii\web\AssetBundle;
 

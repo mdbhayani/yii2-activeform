@@ -1,11 +1,11 @@
 <?php
-namespace dpassionateprogrammer\yii2\activeform\assets;
+namespace mdbhayani\yii2\activeform\assets;
 
 use yii\web\AssetBundle;
 
 class DatetimeWidgetAsset extends AssetBundle
 {
-    public $sourcePath = "@vendor/dpassionateprogrammer/yii2-activeform/reserves";
+    public $sourcePath = "@vendor/mdbhayani/yii2-activeform/reserves";
     
     public $css = [
         "daterangepicker.css"

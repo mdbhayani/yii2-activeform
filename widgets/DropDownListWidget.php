@@ -1,7 +1,7 @@
 <?php
-namespace dpassionateprogrammer\yii2\activeform\widgets;
+namespace mdbhayani\yii2\activeform\widgets;
 
-use dpassionateprogrammer\yii2\activeform\assets\DropDownListWidgetAsset;
+use mdbhayani\yii2\activeform\assets\DropDownListWidgetAsset;
 use yii\base\Widget;
 use yii\helpers\Json;
 

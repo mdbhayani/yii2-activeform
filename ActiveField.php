@@ -1,9 +1,9 @@
 <?php
-namespace dpassionateprogrammer\yii2\activeform;
+namespace mdbhayani\yii2\activeform;
 
-use dpassionateprogrammer\yii2\activeform\widgets\DatetimeWidget;
-use dpassionateprogrammer\yii2\activeform\widgets\DropDownListWidget;
-use dpassionateprogrammer\yii2\activeform\widgets\WysiwygWidget;
+use mdbhayani\yii2\activeform\widgets\DatetimeWidget;
+use mdbhayani\yii2\activeform\widgets\DropDownListWidget;
+use mdbhayani\yii2\activeform\widgets\WysiwygWidget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveField as YiiActiveField;

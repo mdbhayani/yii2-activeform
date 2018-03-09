@@ -1,5 +1,5 @@
 <?php
-namespace dpassionateprogrammer\yii2\activeform;
+namespace mdbhayani\yii2\activeform;
 
 use yii\widgets\ActiveForm as YiiActiveForm;
 
@@ -9,6 +9,6 @@ class ActiveForm extends YiiActiveForm
     {
         parent::init();
         
-        $this->fieldClass = "dpassionateprogrammer\yii2\activeform\ActiveField";
+        $this->fieldClass = "mdbhayani\yii2\activeform\ActiveField";
     }
 }
