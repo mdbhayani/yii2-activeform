@@ -9,9 +9,7 @@ This widget has the following methods.
 
 ### singleDateInput
 This is a single date picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)
-
-
-
+<br /><br /><br /><br />
 ### dateRangeInput
 This is a date range picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)
 
