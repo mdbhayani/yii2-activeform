@@ -15,6 +15,7 @@ Example:
 ```php
 echo $form->field($model, "singleDateField")->singleDateInput();
 ```
+
 <br />
 <br />
 <br />
