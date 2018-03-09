@@ -25,6 +25,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 php composer.phar require mdbhayani/yii2-activeform "*"
 ```
 
+<br />
 After the extension is installed, use it in your code wherever you need activeform.
 
 Following is the example of a single date input field. It uses jquery daterangepicker for the input field.
@@ -32,6 +33,7 @@ Following is the example of a single date input field. It uses jquery daterangep
 echo $form->field($model, "formFieldName")->singleDateInput();
 ```
 
+<br />
 Following is the example of a date range input field. It uses jquery daterangepicker for the input field.
 ```php
 echo $form->field($model, "formFieldName")->dateRangeInput();
