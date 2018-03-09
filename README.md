@@ -11,12 +11,15 @@ This widget has the following methods.
 This is a single date picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)
 
 
+
 ### dateRangeInput
 This is a date range picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)
 
 
+
 ### dropDownList
 This is the yii2 active field method. We have added select2 on the dropDownList. For details on select2 configuration, please see [select2](https://select2.org/)
+
 
 
 ### wysiwyg
