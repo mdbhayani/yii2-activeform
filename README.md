@@ -10,12 +10,10 @@ This widget has the following methods.
 <br />
 <br />
 ### singleDateInput
-This is a single date picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)<br />
-Example:
+This is a single date picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)
 ```php
 echo $form->field($model, "singleDateField")->singleDateInput();
 ```
-
 <br />
 <br />
 <br />
