@@ -35,16 +35,21 @@ echo $form->field($model, "formFieldName")->singleDateInput();
 
 <br />
 Following is the example of a date range input field. It uses jquery daterangepicker for the input field.
+
 ```php
 echo $form->field($model, "formFieldName")->dateRangeInput();
 ```
 
+<br />
 Following is the example of a drop down field. It uses jquery select2 for the input field.
+
 ```php
 echo $form->field($model, "formFieldName")->dropDownList();
 ```
 
+<br />
 Following is the example of a text editor field. It uses summernote for the textarea field.
+
 ```php
 echo $form->field($model, "formFieldName")->wysiwyg();
 ```
