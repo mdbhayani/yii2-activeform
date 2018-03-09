@@ -1,5 +1,5 @@
 {
-    "name": "dbhayani/yii2-activeform",
+    "name": "mdbhayani/yii2-activeform",
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "description": "Yii2 extended activeform widget",
@@ -7,7 +7,7 @@
     "minimum-stability": "dev",
     "authors": [
         {
-            "name": "Danish Bhayani <dbhayani>",
+            "name": "Danish Bhayani <mdbhayani>",
             "email": "mdbhayani.90@gmail.com"
         }
     ],
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "dbhayani\\yii2\\activeform\\": ""
+            "mdbhayani\\yii2\\activeform\\": ""
         }
     }
 }
