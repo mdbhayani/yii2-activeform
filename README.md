@@ -17,10 +17,9 @@ echo $form->field($model, "singleDateField")->singleDateInput();
 <br />
 <br />
 <br />
-### dateRangeInput
-This is a date range picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)<br />
-Example:
 
+### dateRangeInput
+This is a date range picker input field. For datepicker configuration, please see [bootstrap daterangepicker](http://www.daterangepicker.com/)
 ```php
 echo $form->field($model, "dateRangeField")->dateRangeInput();
 ```
