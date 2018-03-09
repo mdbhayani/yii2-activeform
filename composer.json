@@ -1,0 +1,25 @@
+{
+    "name": "dbhayani/yii2-activeform",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "description": "Yii2 extended activeform widget",
+    "keywords": ["yii2", "framework", "activeform", "activefield", "widget"],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Danish Bhayani <dbhayani>",
+            "email": "mdbhayani.90@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.10",
+        "select2/select2": "*",
+        "summernote/summernote": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dbhayani\\yii2\\activeform\\": ""
+        }
+    }
+}
