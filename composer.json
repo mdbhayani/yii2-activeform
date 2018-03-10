@@ -1,14 +1,15 @@
 {
     "name": "mdbhayani/yii2-activeform",
     "type": "yii2-extension",
-    "license": "GNU-2.0",
+    "license": "BSD-3-Clause",
     "description": "Yii2 extended activeform widget",
     "keywords": ["yii2", "framework", "activeform", "activefield", "widget"],
     "minimum-stability": "dev",
     "authors": [
         {
             "name": "Danish Bhayani <mdbhayani>",
-            "email": "mdbhayani.90@gmail.com"
+            "email": "mdbhayani.90@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
