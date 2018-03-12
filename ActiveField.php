@@ -92,6 +92,14 @@ class ActiveField extends YiiActiveField
     {
         parent::textInput($options);
         
+        if (!empty($this->feedBack)) {
+            if (!empty($this->feedBack["glyphicon"])) {
+                $this->parts["{input}"] .= "<span class=\"glyphicon glyphicon-{$this->feedBack["glyphicon"]} form-control-feedback\"></span>";
+            } else if (!empty($this->feedBack["fontawesome"])) {
+                $this->parts["{input}"] .= "<span class=\"fa fa-{$this->feedBack["fontawesome"]} form-control-feedback\"></span>";
+            }
+        }
+        
         if (!empty($this->inputGroup)) {
             $inputGroupBefore = $inputGroupAfter = "";
             
@@ -117,6 +125,42 @@ class ActiveField extends YiiActiveField
             $this->form->getView()->registerJs("
                 $(\"#{$this->getInputId()}\").allowedCharacters(\"$this->allowedCharacters\");
             ");
+        }
+        
+        return $this;
+    }
+    
+    public function passwordInput($options)
+    {
+        parent::passwordInput($options);
+        
+        if (!empty($this->feedBack)) {
+            if (!empty($this->feedBack["glyphicon"])) {
+                $this->parts["{input}"] .= "<span class=\"glyphicon glyphicon-{$this->feedBack["glyphicon"]} form-control-feedback\"></span>";
+            } else if (!empty($this->feedBack["fontawesome"])) {
+                $this->parts["{input}"] .= "<span class=\"fa fa-{$this->feedBack["fontawesome"]} form-control-feedback\"></span>";
+            }
+        }
+        
+        if (!empty($this->inputGroup)) {
+            $inputGroupBefore = $inputGroupAfter = "";
+            
+            if (!empty($this->inputGroup["before"])) {
+                $inputGroupBefore = "<span class=\"input-group-addon\">{$this->inputGroup["before"]}</span>";
+            }
+            if (!empty($this->inputGroup["after"])) {
+                $inputGroupAfter = "<span class=\"input-group-addon\">{$this->inputGroup["after"]}</span>";
+            }
+            
+            if ($inputGroupBefore !== "" OR $inputGroupAfter !== "") {
+                $this->parts["{input}"] = "
+                    <div class=\"input-group\">
+                        {$inputGroupBefore}
+                        {$this->parts["{input}"]}
+                        {$inputGroupAfter}
+                    </div>
+                ";
+            }
         }
         
         return $this;
