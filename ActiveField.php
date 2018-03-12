@@ -93,6 +93,8 @@ class ActiveField extends YiiActiveField
         parent::textInput($options);
         
         if (!empty($this->feedBack)) {
+            $this->options["class"] .= " has-feedback";
+            
             if (!empty($this->feedBack["glyphicon"])) {
                 $this->parts["{input}"] .= "<span class=\"glyphicon glyphicon-{$this->feedBack["glyphicon"]} form-control-feedback\"></span>";
             } else if (!empty($this->feedBack["fontawesome"])) {
