@@ -10,106 +10,198 @@ use yii\widgets\ActiveField as YiiActiveField;
 
 class ActiveField extends YiiActiveField
 {
-    /**
-     * @param array $options input options
-     * @return string
+    /*
+     * @var array the input group for form controls
+     * 
+     * To add group addon before the input element:
+     * inputGroup => ["before" => ""]
+     * 
+     * To add group addon after the input element:
+     * inputGroup => ["after" => ""] 
      */
-    public function singleDateInput($options = [])
+    public $inputGroup;
+    
+    /*
+     * @var array config for setting widget config property
+     */
+    private $config = [];
+    
+    /*
+     * @var string regex allowed characters for Javascript events
+     */
+    private $allowedCharacters;
+    
+    /*
+     * Sets the private $config property to be further used in widgets
+     * 
+     * @param array set the private config property
+     */
+    public function setConfig($config)
     {
-        $options = ArrayHelper::merge($this->inputOptions, $options);
-        $config = [];
-        
-        if (!empty($options["config"])) {
-            $config = $options["config"];
-            unset($options["config"]);
-        }
-        
-        $config = ArrayHelper::merge($config, ["singleDatePicker" => true]);
-        
-        parent::textInput($options);
-        
-        $this->parts["{input}"] = "
-            <div class=\"input-group\">
-                " . Html::activeTextInput($this->model, $this->attribute, $options) . "
-                <span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>
-            </div>
-        ";
-        
-        echo DatetimeWidget::widget([
-            "inputID" => $this->getInputId(),
-            "config" => $config
-        ]);
+        $this->config = $config;
         
         return $this;
     }
     
-    /**
-     * @param array $options input options
-     * @return string
+    /*
+     * Sets the alpha regex for textInput() method.
+     * Allowed characters: A-Za-z and spaces
      */
-    public function dateRangeInput($options = [])
+    public function allowAlphaCharactersOnly()
     {
-        $options = ArrayHelper::merge($this->inputOptions, $options);
-        $config = [];
+        $this->setAllowedCharacters("A-za-z ");
         
-        if (!empty($options["config"])) {
-            $config = $options["config"];
-            unset($options["config"]);
-        }
+        return $this;
+    }
+    
+    /*
+     * Sets the numeric regex for textInput() method.
+     * Allowed characters: 0-9
+     */
+    public function allowNumericCharactersOnly()
+    {
+        $this->setAllowedCharacters("0-9");
         
+        return $this;
+    }
+    
+    /*
+     * Sets the alpha numeric regex for textInput() method.
+     * Allowed characters: A-Za-z0-9
+     */
+    public function allowAlphaNumericCharactersOnly()
+    {
+        $this->setAllowedCharacters("A-Za-z0-9");
+        
+        return $this;
+    }
+    
+    /*
+     * Sets the regex for textInput() method.
+     * Please note not to begin or end the regex with "[" OR "]" as this is already done in the javascript
+     * @param string regex to perform events
+     */
+    public function setAllowedCharacters($regex)
+    {
+        $this->allowedCharacters = $regex;
+        
+        return $this;
+    }
+    
+    public function textInput($options = [])
+    {
         parent::textInput($options);
         
-        $this->parts["{input}"] = "
-            <div class=\"input-group\">
-                " . Html::activeTextInput($this->model, $this->attribute, $options) . "
-                <span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>
-            </div>
-        ";
+        if (!empty($this->inputGroup)) {
+            $inputGroupBefore = $inputGroupAfter = "";
+            
+            if (!empty($this->inputGroup["before"])) {
+                $inputGroupBefore = "<span class=\"input-group-addon\">{$this->inputGroup["before"]}</span>";
+            }
+            if (!empty($this->inputGroup["after"])) {
+                $inputGroupAfter = "<span class=\"input-group-addon\">{$this->inputGroup["after"]}</span>";
+            }
+            
+            if ($inputGroupBefore !== "" OR $inputGroupAfter !== "") {
+                $this->parts["{input}"] = "
+                    <div class=\"input-group\">
+                        {$inputGroupBefore}
+                        {$this->parts["{input}"]}
+                        {$inputGroupAfter}
+                    </div>
+                ";
+            }
+        }
         
-        echo DatetimeWidget::widget([
-            "inputID" => $this->getInputId(),
-            "config" => $config
-        ]);
+        if (!empty($this->allowedCharacters)) {
+            $this->form->getView()->registerJs("
+                $(\"#{$this->getInputId()}\").allowedCharacters(\"$this->allowedCharacters\");
+            ");
+        }
         
         return $this;
     }
     
     public function dropDownList($items, $options = [])
     {
-        $options = array_merge($this->inputOptions, $options);
-        $options["class"] = !empty($options["class"]) ? $options["class"] . " select2" : "select2";
-        $config = [];
-        
-        if (!empty($options["config"])) {
-            $config = $options["config"];
-            unset($options["config"]);
-        }
-        
         parent::dropDownList($items, $options);
+        
+        if (!empty($this->inputGroup)) {
+            $inputGroupBefore = $inputGroupAfter = "";
+            
+            if (!empty($this->inputGroup["before"])) {
+                $inputGroupBefore = "<span class=\"input-group-addon\">{$this->inputGroup["before"]}</span>";
+            }
+            if (!empty($this->inputGroup["after"])) {
+                $inputGroupAfter = "<span class=\"input-group-addon\">{$this->inputGroup["after"]}</span>";
+            }
+            
+            if ($inputGroupBefore !== "" OR $inputGroupAfter !== "") {
+                $this->parts["{input}"] = "
+                    <div class=\"input-group\">
+                        {$inputGroupBefore}
+                        {$this->parts["{input}"]}
+                        {$inputGroupAfter}
+                    </div>
+                ";
+            }
+        }
         
         echo DropDownListWidget::widget([
             "inputID" => $this->getInputId(),
-            "config" => $config
+            "config" => $this->config
         ]);
 
         return $this;
     }
     
+    public function singleDateInput($options = [])
+    {
+        parent::textInput($options);
+        
+        $this->parts["{input}"] = "
+            <div class=\"input-group\">
+                " . Html::activeTextInput($this->model, $this->attribute, $options) . "
+                <span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>
+            </div>
+        ";
+        
+        $this->config = ArrayHelper::merge($this->config, ["singleDatePicker" => true]);
+        
+        echo DatetimeWidget::widget([
+            "inputID" => $this->getInputId(),
+            "config" => $this->config
+        ]);
+        
+        return $this;
+    }
+    
+    public function dateRangeInput($options = [])
+    {
+        parent::textInput($options);
+        
+        $this->parts["{input}"] = "
+            <div class=\"input-group\">
+                " . Html::activeTextInput($this->model, $this->attribute, $options) . "
+                <span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-calendar\"></span></span>
+            </div>
+        ";
+        
+        echo DatetimeWidget::widget([
+            "inputID" => $this->getInputId(),
+            "config" => $this->config
+        ]);
+        
+        return $this;
+    }
+    
     public function wysiwyg($options = [])
     {
-        $options = array_merge($this->inputOptions, $options);
-        $config = [];
-        
-        if (!empty($options["config"])) {
-            $config = $options["config"];
-            unset($options["config"]);
-        }
-        
         parent::textarea($options);
         
         echo WysiwygWidget::widget([
             "inputID" => $this->getInputId(),
-            "config" => $config
+            "config" => $this->config
         ]);
         
         return $this;
