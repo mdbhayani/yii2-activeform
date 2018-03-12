@@ -90,11 +90,13 @@ class ActiveField extends YiiActiveField
     
     public function textInput($options = [])
     {
+        if (!empty($this->feedBack)) {
+            $this->options["class"] .= " has-feedback";
+        }
+        
         parent::textInput($options);
         
         if (!empty($this->feedBack)) {
-            $this->options["class"] .= " has-feedback";
-            
             if (!empty($this->feedBack["glyphicon"])) {
                 $this->parts["{input}"] .= "<span class=\"glyphicon glyphicon-{$this->feedBack["glyphicon"]} form-control-feedback\"></span>";
             } else if (!empty($this->feedBack["fontawesome"])) {
@@ -134,6 +136,10 @@ class ActiveField extends YiiActiveField
     
     public function passwordInput($options)
     {
+        if (!empty($this->feedBack)) {
+            $this->options["class"] .= " has-feedback";
+        }
+        
         parent::passwordInput($options);
         
         if (!empty($this->feedBack)) {
