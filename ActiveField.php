@@ -22,6 +22,12 @@ class ActiveField extends YiiActiveField
     public $inputGroup;
     
     /*
+     * @var array feedBack config for bootstrap form-control
+     * feedback can be a bootstrap glyphicon or fontawesome
+     */
+    private $feedBack;
+    
+    /*
      * @var array config for setting widget config property
      */
     private $config = [];
@@ -30,6 +36,22 @@ class ActiveField extends YiiActiveField
      * @var string regex allowed characters for Javascript events
      */
     private $allowedCharacters;
+    
+    /*
+     * Sets the private $feedback property
+     * Can be used for glyphicons or fontawesome
+     * 
+     * Examples:
+     * 
+     * $form->field($model, "fieldName")->setFeedBack(["glyphicon" => "lock"])
+     * $form->field($model, "fieldName")->setFeedBack(["fontawesome" => "user"])
+     */
+    public function setFeedBack($feedback)
+    {
+        $this->feedBack = $feedback;
+        
+        return $this;
+    }
     
     /*
      * Sets the private $config property to be further used in widgets
@@ -88,7 +110,7 @@ class ActiveField extends YiiActiveField
         return $this;
     }
     
-    public function textInput($options = [])
+    public function textInput($options = array())
     {
         if (!empty($this->feedBack)) {
             $this->options["class"] .= " has-feedback";
@@ -134,7 +156,7 @@ class ActiveField extends YiiActiveField
         return $this;
     }
     
-    public function passwordInput($options)
+    public function passwordInput($options = array())
     {
         if (!empty($this->feedBack)) {
             $this->options["class"] .= " has-feedback";
