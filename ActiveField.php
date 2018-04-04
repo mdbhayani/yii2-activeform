@@ -231,6 +231,8 @@ class ActiveField extends YiiActiveField
     
     public function singleDateInput($options = [])
     {
+        $options = array_merge($this->inputOptions, $options);
+        
         parent::textInput($options);
         
         $this->parts["{input}"] = "
@@ -252,6 +254,8 @@ class ActiveField extends YiiActiveField
     
     public function dateRangeInput($options = [])
     {
+        $options = array_merge($this->inputOptions, $options);
+        
         parent::textInput($options);
         
         $this->parts["{input}"] = "
